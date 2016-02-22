@@ -1,0 +1,5 @@
+#foreach($s in $data)
+
+<h5 style="color: cornflowerblue">欢迎来Kotlin世界: $s</h5>
+
+#end
