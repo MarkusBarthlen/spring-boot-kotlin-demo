@@ -14,6 +14,9 @@ fun main(args: Array<String>) {
     val numbers = listOf(1, 2, 3, 4, 6);
     println(numbers.filter { it % 2 == 0 });
 
+    // Mapping
+    println(numbers.map { it * it });
+
     // Read-only map & Traverse
     val dict = mapOf("a" to "adam", "b" to "ben", "c" to  "chen");
     for ((k, v) in dict) {
