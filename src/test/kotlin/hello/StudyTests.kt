@@ -1,4 +1,10 @@
+package hello
+
 import java.io.File
+import java.util.*
+import java.util.concurrent.Callable
+import java.util.concurrent.Executors
+import java.util.concurrent.Future
 
 /**
  * Kotlin学习示例
@@ -38,6 +44,24 @@ fun main(args: Array<String>) {
     println(State.START.desc);
     println(State.valueOf("END").code);
     println(getStateByCode(2));
+
+    // future task
+    val executor = Executors.newCachedThreadPool();
+    val futures = ArrayList<Future<Int>>();
+
+    // submit
+    for (i in 1..4) {
+        futures.add(executor.submit(Callable { i * i }));
+    }
+
+    // get
+    for (future in futures) {
+        println(future.get());
+    }
+
+    // shutdown
+    executor.shutdown();
+
 }
 
 // Creating a singleton
@@ -53,6 +77,7 @@ enum class State(val code: Int, val desc: String) {
 
 }
 
+// return when
 fun getStateByCode(code: Int): State {
     return when (code) {
         0 -> State.INIT;
